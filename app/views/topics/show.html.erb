@@ -30,8 +30,8 @@
       <tr>
         <td><%= comment.content %></td>
         <td><%= comment.like %></td>
-        <td><%= link_to 'Show', topic_comment_path(@topic, comment) %></td>
-        <td><%= link_to 'Edit', edit_topic_comment_path(@topic, comment) %></td>
+        <!-- <td><%= link_to 'Show', topic_comment_path(@topic, comment) %></td>
+        <td><%= link_to 'Edit', edit_topic_comment_path(@topic, comment) %></td> -->
         <td><%= link_to 'Destroy', topic_comment_path(@topic, comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
