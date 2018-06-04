@@ -14,7 +14,7 @@
   <tbody>
     <% @topics.each do |topic| %>
       <tr>
-        <td><%= topic.content %></td>
+        <td><%= link_to topic.content, topic %></td>
         <td><%= topic.like %></td>
         <td><%= link_to 'Show', topic %></td>
         <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Topic', new_topic_path %>
+<%= link_to '誰かのおすすめが聞きたい！', new_topic_path %>

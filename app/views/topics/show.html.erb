@@ -10,9 +10,6 @@
   <%= @topic.like %>
 </p>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
-
 
 <h1>Comments</h1>
 
@@ -55,3 +52,7 @@
     <% end %>
   </div>
 </div>
+
+<br>
+<br>
+<%= link_to 'トピック一覧へ戻る', topics_path %>
