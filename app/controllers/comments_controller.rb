@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
+    @topic = Topic.where(:id => params[:group_id]).first
     @comment = Comment.new
   end
 
