@@ -12,6 +12,7 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.where(:id => params[:id]).first
     @comments = @topic.comments.all
+    @comment = @topic.comments.new
   end
 
   # GET /topics/new

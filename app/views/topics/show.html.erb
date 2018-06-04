@@ -40,4 +40,21 @@
 
 <br>
 
+<h3>新規コメントをつける</h3>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for [@topic, @comment] do |f| %>
+      <%= f.label :content %>
+      <%= f.text_field :content %>
+
+      <%= f.label :like %>
+      <%= f.number_field :like %>
+
+      <%= f.submit "コメントをつける", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+
 <%= link_to 'New Comment', new_topic_comment_path(:topic_id => params[:id]) %>
