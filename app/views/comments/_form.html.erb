@@ -1,32 +1,14 @@
-<%= form_with(model: comment, local: true) do |form| %>
-  <% if comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
-      <ul>
-      <% comment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for [@topic, @comment] do |f| %>
+      <%= f.label :content %>
+      <%= f.text_field :content %>
 
-  <div class="field">
-    <%= form.label :topic_id %>
-    <%= form.text_field :topic_id %>
+      <%= f.label :like %>
+      <%= f.number_field :like %>
+
+      <%= f.submit "質問作成", class: "btn btn-primary" %>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="field">
-    <%= form.label :like %>
-    <%= form.number_field :like %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

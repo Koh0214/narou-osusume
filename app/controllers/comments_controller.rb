@@ -4,7 +4,8 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @topic = Topic.where(:id => params[:topic_id]).first
+    @comments = @topic.comments.all
   end
 
   # GET /comments/1
@@ -14,8 +15,8 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @topic = Topic.where(:id => params[:group_id]).first
-    @comment = Comment.new
+    @topic = Topic.where(:id => params[:topic_id]).first
+    @comment = @topic.comments.new
   end
 
   # GET /comments/1/edit
@@ -25,11 +26,12 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    @topic = Topic.where(:id => params[:topic_id]).first
+    @comment = @topic.comments.new(comment_params)
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to topic_comments_path, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
