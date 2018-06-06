@@ -10,9 +10,6 @@
   <%= @topic.like %>
 </p>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
-
 
 <h1>Comments</h1>
 
@@ -30,8 +27,8 @@
       <tr>
         <td><%= comment.content %></td>
         <td><%= comment.like %></td>
-        <td><%= link_to 'Show', topic_comment_path(@topic, comment) %></td>
-        <td><%= link_to 'Edit', edit_topic_comment_path(@topic, comment) %></td>
+        <!-- <td><%= link_to 'Show', topic_comment_path(@topic, comment) %></td>
+        <td><%= link_to 'Edit', edit_topic_comment_path(@topic, comment) %></td> -->
         <td><%= link_to 'Destroy', topic_comment_path(@topic, comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -40,4 +37,22 @@
 
 <br>
 
-<%= link_to 'New Comment', new_topic_comment_path(:topic_id => params[:id]) %>
+<h3>新規コメントをつける</h3>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for [@topic, @comment] do |f| %>
+      <%= f.label :content %>
+      <%= f.text_field :content %>
+
+      <%= f.label :like %>
+      <%= f.number_field :like %>
+
+      <%= f.submit "コメントをつける", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<br>
+<br>
+<%= link_to 'トピック一覧へ戻る', topics_path %>
