@@ -1,0 +1,17 @@
+= form_with(model: topic, local: true) do |form|
+  - if topic.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(topic.errors.count, "error")
+        prohibited this topic from being saved:
+      %ul
+        - topic.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = form.label :content
+    = form.text_field :content
+  .field
+    = form.label :like
+    = form.number_field :like
+  .actions
+    = form.submit

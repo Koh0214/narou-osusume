@@ -1,0 +1,19 @@
+.container.px-2{:style => "background-color:#e0ffff;"}
+  .row
+    %p#notice= notice
+    %h1.col-12 なろうのすすめ
+  - @topics.each do |topic|
+    = link_to(topic_path(topic)) do
+      .card.mx-auto.mb-1.yubi.shadow
+        .card-body.pb-2
+          .row
+            .font-weight-bold{:style => "font-size:18px; color:#283593;"}
+              = topic.content
+          .row
+            .small.text-muted.p-1.pt-2{:style => "font-size:11px"}
+              回答数（#{topic.comments.count}）
+              %div
+                = topic.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
+  .row
+    %br/
+    = link_to '誰かのおすすめが聞きたい！', new_topic_path, class: 'btn btn-outline-info alert-info'

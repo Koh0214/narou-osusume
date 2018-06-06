@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong Topic:
+  = @comment.topic
+%p
+  %strong Content:
+  = @comment.content
+%p
+  %strong Like:
+  = @comment.like
+= link_to 'Edit', edit_topic_comment_path(@comment)
+|
+= link_to 'Back', topic_comments_path
