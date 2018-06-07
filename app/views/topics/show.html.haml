@@ -23,8 +23,8 @@
           -#     = topic.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
   .row.m-3
     / 切り替えボタンの設定
-    %button.btn.btn-primary{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
-      コメントする
+    %button.btn.comment-button{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
+      = fa_icon 'pencil 2x'
     / モーダルの設定
     #myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
       .modal-dialog.modal-dialog-centered{:role => "document"}
