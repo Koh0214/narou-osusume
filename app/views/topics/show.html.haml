@@ -15,8 +15,8 @@
         .card-body.pl-2.pt-3.pr-4.pb-5{:style => "min-height:100px;"}
           .row.pl-3.pb-2.small.text-muted
             = comment.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
-          .font-weight-bold{:style => "font-size:17px;"}
-            = comment.content
+          .font-weight-bold
+            = simple_format(comment.content,:style => "font-size:17px; line-height:160%;")
           -# .row
           -#   .small.text-muted.p-1.pt-2{:style => "font-size:11px"}
           -#     回答数（#{topic.comments.count}）
@@ -27,7 +27,7 @@
     .col-md-6.col-md-offset-3
       = form_for [@topic, @comment] do |f|
         = f.label :content
-        = f.text_field :content
+        = f.text_area :content
         = f.label :like
         = f.number_field :like
         = f.submit "コメントをつける", class: "btn btn-primary"
