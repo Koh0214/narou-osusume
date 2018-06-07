@@ -1,3 +1,30 @@
 // Place all the styles related to the Topics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.modal-text{
+  height: 150px;
+  min-width: 300px;
+}
+
+.comment-button{
+  border-radius: 50% !important;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  font-weight: bold;
+  background-color: #E5F4F7;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.19);
+
+  position:fixed;
+  bottom:15px;
+  right:15px;
+  z-index:999;
+}
+
+.comment-button .fa{
+  color: #25A2B7;
+}

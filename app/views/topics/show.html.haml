@@ -1,31 +1,45 @@
-.container.px-2{:style => "background-color:#e0ffff;"}
-  .row
-    %p#notice= notice
-    %p
-      = @topic.content
-      総いいね数（#{@topic.like})
-  .row
-    %table
-      %thead
-        %tr
-          %th Content
-          %th Like
-          %th{:colspan => "3"}
-      %tbody
-        - @comments.each do |comment|
-          %tr
-            %td= comment.content
-            %td= comment.like
-    %br/
-  .row
-    %h3 新規コメントをつける
-  .row
-    .col-md-6.col-md-offset-3
-      = form_for [@topic, @comment] do |f|
-        = f.label :content
-        = f.text_field :content
-        = f.label :like
-        = f.number_field :like
-        = f.submit "コメントをつける", class: "btn btn-primary"
-  .row
-    = link_to 'トピック一覧へ戻る', topics_path
+.container{:style => "background-color:#e0ffff;"}
+  .row.h1
+    = link_to 'なろうのすすめ', topics_path
+  .row.mb-2
+    #notice= notice
+    .card.mt-2.mb-2.w-100
+      .card-body.py-1
+        .font-weight-bold{:style => "font-size:18px; color:#283593;"}
+          = @topic.content
+          .small.text-muted.float-right.pt-1{:style => "font-size:12px"}
+            回答数（#{@topic.comments.count})
+  - @comments.each do |comment|
+    .row
+      .card.mx-2.w-100.shadow
+        .card-body.pl-2.pt-3.pr-4.pb-5{:style => "min-height:100px;"}
+          .row.pl-3.pb-2.small.text-muted
+            = comment.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
+          .font-weight-bold
+            = simple_format(comment.content,:style => "font-size:17px; line-height:160%;")
+          -# .row
+          -#   .small.text-muted.p-1.pt-2{:style => "font-size:11px"}
+          -#     回答数（#{topic.comments.count}）
+          -#     = topic.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
+  .row.m-3
+    / 切り替えボタンの設定
+    %button.btn.comment-button{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
+      = fa_icon 'pencil 2x'
+    / モーダルの設定
+    #myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+      .modal-dialog.modal-dialog-centered{:role => "document"}
+        .modal-content
+          .modal-header
+            #exampleModalLabel.modal-title #{@topic.content}
+            %button.close{"aria-label" => "閉じる", "data-dismiss" => "modal", :type => "button"}
+              .pt-3{"aria-hidden" => "true"} ×
+          .modal-body
+            .row
+              .mx-auto
+                = form_for [@topic, @comment] do |f|
+                  = f.label :名前
+                  -# 後でcontent > name に変えて名前を登録できるようにする
+                  = f.text_field :content
+                  = f.text_area :content, :placeholder=>'コメントありがとうございます！', class: "mx-auto mt-2 d-block modal-text"
+                  .m-3
+                    = f.submit "コメントする", class: "btn btn-primary px-5 mx-auto d-block"
