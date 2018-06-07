@@ -1,22 +1,26 @@
-.container.px-2{:style => "background-color:#e0ffff;"}
-  .row
-    %p#notice= notice
-    %p
-      = @topic.content
-      総いいね数（#{@topic.like})
-  .row
-    %table
-      %thead
-        %tr
-          %th Content
-          %th Like
-          %th{:colspan => "3"}
-      %tbody
-        - @comments.each do |comment|
-          %tr
-            %td= comment.content
-            %td= comment.like
-    %br/
+.container{:style => "background-color:#e0ffff;"}
+  .row.h1
+    = link_to 'なろうのすすめ', topics_path
+  .row.mb-2
+    #notice= notice
+    .card.mt-2.mb-2.w-100
+      .card-body.py-1
+        .font-weight-bold{:style => "font-size:18px; color:#283593;"}
+          = @topic.content
+          .small.text-muted.float-right.pt-1{:style => "font-size:12px"}
+            回答数（#{@topic.comments.count})
+  - @comments.each do |comment|
+    .row
+      .card.mx-2.w-100.shadow
+        .card-body.pl-2.pt-3.pr-4.pb-5{:style => "min-height:100px;"}
+          .row.pl-3.pb-2.small.text-muted
+            = comment.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
+          .font-weight-bold{:style => "font-size:17px;"}
+            = comment.content
+          -# .row
+          -#   .small.text-muted.p-1.pt-2{:style => "font-size:11px"}
+          -#     回答数（#{topic.comments.count}）
+          -#     = topic.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
   .row
     %h3 新規コメントをつける
   .row
@@ -27,5 +31,3 @@
         = f.label :like
         = f.number_field :like
         = f.submit "コメントをつける", class: "btn btn-primary"
-  .row
-    = link_to 'トピック一覧へ戻る', topics_path
