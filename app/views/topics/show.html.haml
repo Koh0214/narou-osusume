@@ -7,20 +7,27 @@
       .card-body.py-1
         .font-weight-bold{:style => "font-size:18px; color:#283593;"}
           = @topic.content
-          .small.text-muted.float-right.pt-1{:style => "font-size:12px"}
-            回答数（#{@topic.comments.count})
+          .small.text-muted.p-1.pt-2{:style => "font-size:11px"}
+            %span{"class"=>"comment-count"}【
+            .fa.fa-comments-o.topic-comment-icon
+            %span{"class"=>"comment-count"}（#{@topic.comments.count}）】
+            - if @topic.name
+              %span{"class"=>"topic-create-user-name"}【
+              .fa.fa-pencil.topic-name
+              %span{"class"=>"topic-create-user-name"} #{@topic.name}】
+            = @topic.created_at.strftime("%Y/%m/%d/ %H:%M")
   - @comments.each do |comment|
     .row
       .card.mx-2.w-100.shadow
         .card-body.pl-2.pt-3.pr-4.pb-5{:style => "min-height:100px;"}
           .row.pl-3.pb-2.small.text-muted
+            -# 名前ある時だけ、アイコンと名前を表示
+            -if comment.name.present?
+              .fa.fa-pencil{:style => "color:grey"}
+              #{comment.name}
             = comment.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
           .font-weight-bold
             = simple_format(comment.content,:style => "font-size:17px; line-height:160%;")
-          -# .row
-          -#   .small.text-muted.p-1.pt-2{:style => "font-size:11px"}
-          -#     回答数（#{topic.comments.count}）
-          -#     = topic.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
   .row.m-3
     / 切り替えボタンの設定
     %button.btn.comment-button{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
@@ -39,7 +46,7 @@
                 = form_for [@topic, @comment] do |f|
                   = f.label :名前
                   -# 後でcontent > name に変えて名前を登録できるようにする
-                  = f.text_field :content, :value=>"なろう廃人さん", :placeholder=>'名前'
+                  = f.text_field :name, :value=>"なろう廃人さん", :placeholder=>'名前'
                   = f.text_area :content, :placeholder=>'コメントありがとうございます！', class: "mx-auto mt-2 d-block modal-text"
                   .m-3
                     = f.submit "コメントする", class: "btn btn-primary px-5 mx-auto d-block"
