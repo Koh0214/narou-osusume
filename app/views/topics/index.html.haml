@@ -11,7 +11,13 @@
               = topic.content
           .row
             .small.text-muted.p-1.pt-2{:style => "font-size:11px"}
-              回答数（#{topic.comments.count}）
-              = topic.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
+              %span{"class"=>"comment-count"}【
+              .fa.fa-comments-o.topic-comment-icon
+              %span{"class"=>"comment-count"}（#{topic.comments.count}）】
+              - if topic.name
+                %span{"class"=>"topic-create-user-name"}【
+                .fa.fa-pencil.topic-name
+                %span{"class"=>"topic-create-user-name"} #{topic.name}】
+              = topic.created_at.strftime("%Y/%m/%d/ %H:%M")
   .row
     = link_to '誰かのおすすめが聞きたい！', new_topic_path, class: 'btn btn-outline-info alert-info'

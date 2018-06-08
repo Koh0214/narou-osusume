@@ -3,6 +3,25 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+//topics#index
+//コメントアイコンとコメント数の色を揃える
+.fa-comments-o{
+  font-size:16px !important;
+  color:#283593;
+}
+.comment-count{
+  color:#283593;
+}
+//トピック作成アイコンと作成者名の色を揃える
+.fa-pencil{
+  font-size:16px !important;
+  color:rgb(4, 51, 251);
+}
+.topic-create-user-name{
+  color:rgb(4, 51, 251);
+}
+
+
 .modal-text{
   height: 150px;
   min-width: 300px;
