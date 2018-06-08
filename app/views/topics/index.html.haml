@@ -1,7 +1,7 @@
 .container{:style => "background-color:#e0ffff;"}
   .row
     %p#notice= notice
-    %h1.col-12 なろうのすすめ
+    %h3.col-12 なろう廃人のすすめ
   - @topics.each do |topic|
     = link_to(topic_path(topic)) do
       .card.mx-auto.mb-1.shadow
