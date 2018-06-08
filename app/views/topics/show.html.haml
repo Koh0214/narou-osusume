@@ -1,6 +1,6 @@
 .container{:style => "background-color:#e0ffff;"}
-  .row.h1
-    = link_to 'なろうのすすめ', topics_path
+  .row.h3.col-12
+    = link_to 'なろう廃人のすすめ', topics_path
   .row.mb-2
     #notice= notice
     .card.mt-2.mb-2.w-100
@@ -39,7 +39,7 @@
                 = form_for [@topic, @comment] do |f|
                   = f.label :名前
                   -# 後でcontent > name に変えて名前を登録できるようにする
-                  = f.text_field :content
+                  = f.text_field :content, :value=>"なろう廃人さん", :placeholder=>'名前'
                   = f.text_area :content, :placeholder=>'コメントありがとうございます！', class: "mx-auto mt-2 d-block modal-text"
                   .m-3
                     = f.submit "コメントする", class: "btn btn-primary px-5 mx-auto d-block"
