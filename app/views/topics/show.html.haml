@@ -16,18 +16,32 @@
               .fa.fa-pencil.topic-name
               %span{"class"=>"topic-create-user-name"} #{@topic.name}】
             = @topic.created_at.strftime("%Y/%m/%d/ %H:%M")
-  - @comments.each do |comment|
+  -# トピックの持つコメントを全て表示
+  - @comments.each_with_index do |comment, id|
     .row
       .card.mx-2.w-100.shadow
-        .card-body.pl-2.pt-3.pr-4.pb-5{:style => "min-height:100px;"}
+        .card-body.pl-2.pt-3.pr-4.pb-2{:style => "min-height:100px;"}
           .row.pl-3.pb-2.small.text-muted
+            #{id+1}：
             -# 名前ある時だけ、アイコンと名前を表示
             -if comment.name.present?
-              .fa.fa-pencil{:style => "color:grey"}
+              -# .fa.fa-pencil.mr-1{:style => "color:grey"}
               #{comment.name}
             = comment.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
-          .font-weight-bold
+          .font-weight-bold.pb-4
             = simple_format(comment.content,:style => "font-size:17px; line-height:160%;")
+          -# 返信ボタン
+          .fa.fa-reply.float-right#comment-reply-button.btn{"data-target" => "#myReplyModal", "data-toggle" => "modal"}
+  -# コメント下のフォーム
+  .row
+    .mx-auto.mt-4
+      = form_for [@topic, @comment] do |f|
+        = f.label :名前
+        -# 後でcontent > name に変えて名前を登録できるようにする
+        = f.text_field :name, :value=>"なろう廃人さん", :placeholder=>'名前'
+        = f.text_area :content, :placeholder=>'コメントお願いします！', class: "mt-2 d-block modal-text"
+        .m-3
+          = f.submit "コメントする", class: "btn btn-primary px-5 mx-auto d-block"
   .row.m-3
     / 切り替えボタンの設定
     %button.btn.comment-button{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
@@ -48,5 +62,28 @@
                   -# 後でcontent > name に変えて名前を登録できるようにする
                   = f.text_field :name, :value=>"なろう廃人さん", :placeholder=>'名前'
                   = f.text_area :content, :placeholder=>'コメントありがとうございます！', class: "mx-auto mt-2 d-block modal-text"
+                  .m-3
+                    = f.submit "コメントする", class: "btn btn-primary px-5 mx-auto d-block"
+  -# 返信用のモーダル
+  .row.m-3
+    / 切り替えボタンの設定
+    %button.btn.comment-button{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
+      = fa_icon 'pencil 2x'
+    / モーダルの設定
+    #myReplyModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+      .modal-dialog.modal-dialog-centered{:role => "document"}
+        .modal-content
+          .modal-header
+            #exampleModalLabel.modal-title #{@topic.content}
+            %button.close{"aria-label" => "閉じる", "data-dismiss" => "modal", :type => "button"}
+              .pt-3{"aria-hidden" => "true"} ×
+          .modal-body
+            .row
+              .mx-auto
+                = form_for [@topic, @comment] do |f|
+                  = f.label :名前
+                  -# 後でcontent > name に変えて名前を登録できるようにする
+                  = f.text_field :name, :value=>"なろう廃人さん", :placeholder=>'名前'
+                  = f.text_area :content, :placeholder=>'コメントありがとうございます！', class: "mx-auto mt-2 d-block modal-text reply-modal-text"
                   .m-3
                     = f.submit "コメントする", class: "btn btn-primary px-5 mx-auto d-block"
