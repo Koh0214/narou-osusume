@@ -16,14 +16,16 @@
               .fa.fa-pencil.topic-name
               %span{"class"=>"topic-create-user-name"} #{@topic.name}】
             = @topic.created_at.strftime("%Y/%m/%d/ %H:%M")
-  - @comments.each do |comment|
+  -# トピックの持つコメントを全て表示
+  - @comments.each_with_index do |comment, id|
     .row
       .card.mx-2.w-100.shadow
         .card-body.pl-2.pt-3.pr-4.pb-5{:style => "min-height:100px;"}
           .row.pl-3.pb-2.small.text-muted
+            %span{"class"=>"mr-2"} #{id+1}
             -# 名前ある時だけ、アイコンと名前を表示
             -if comment.name.present?
-              .fa.fa-pencil{:style => "color:grey"}
+              -# .fa.fa-pencil.mr-1{:style => "color:grey"}
               #{comment.name}
             = comment.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
           .font-weight-bold
@@ -34,7 +36,7 @@
         = f.label :名前
         -# 後でcontent > name に変えて名前を登録できるようにする
         = f.text_field :name, :value=>"なろう廃人さん", :placeholder=>'名前'
-        = f.text_area :content, :placeholder=>'コメントお願いします！', class: "mx-auto mt-2 d-block modal-text"
+        = f.text_area :content, :placeholder=>'コメントお願いします！', class: "mt-2 d-block modal-text"
         .m-3
           = f.submit "コメントする", class: "btn btn-primary px-5 mx-auto d-block"
   .row.m-3
