@@ -28,6 +28,15 @@
             = comment.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
           .font-weight-bold
             = simple_format(comment.content,:style => "font-size:17px; line-height:160%;")
+  .row
+    .mx-auto.mt-4
+      = form_for [@topic, @comment] do |f|
+        = f.label :名前
+        -# 後でcontent > name に変えて名前を登録できるようにする
+        = f.text_field :name, :value=>"なろう廃人さん", :placeholder=>'名前'
+        = f.text_area :content, :placeholder=>'コメントお願いします！', class: "mx-auto mt-2 d-block modal-text"
+        .m-3
+          = f.submit "コメントする", class: "btn btn-primary px-5 mx-auto d-block"
   .row.m-3
     / 切り替えボタンの設定
     %button.btn.comment-button{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
