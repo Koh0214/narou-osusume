@@ -30,8 +30,8 @@
               -# .fa.fa-pencil.mr-1{:style => "color:grey"}
               #{comment.name}
             = comment.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
-            %br
-            %span{"class"=>"comment-id"} #{comment.id}
+            -# コメントのユニークID（ajaxでいいね数カウントするために表示）
+            %span{"class"=>"comment-id-number", "hidden"=>"true"} #{comment.id}
           .font-weight-bold.pb-4
             = simple_format(comment.content,:style => "font-size:17px; line-height:160%;")
           -# いいねボタン
