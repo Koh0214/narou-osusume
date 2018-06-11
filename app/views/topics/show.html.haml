@@ -36,6 +36,10 @@
             = simple_format(comment.content,:style => "font-size:17px; line-height:160%;")
           -# いいねボタン
           .fa.fa-heart-o.float-right.like-button.btn
+          = button_to topic_comment_path(comment, topic_id: @topic.id, like: '100'), method: :put, class: "like-button fa fa-heart-o float-right", remote: true do
+            -# = image_tag("icon_red_heart.svg")
+            %span
+              = comment.like
           -# 返信ボタン
           .fa.fa-reply.float-right.reply-button.btn{"data-target" => "#myReplyModal", "data-toggle" => "modal"}
   -# コメント下のフォーム
