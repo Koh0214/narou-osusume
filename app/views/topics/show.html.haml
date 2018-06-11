@@ -32,14 +32,7 @@
             = comment.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
           .font-weight-bold.pb-4
             = simple_format(comment.content,:style => "font-size:17px; line-height:160%;")
-          -# いいねボタン
-          = button_to topic_comment_likes_path(@topic, comment, @like), id: "like-button", class: " fa fa-heart-o float-right like-button btn", remote: true do
-            -# = image_tag("icon_heart.svg")
-            %span
-              -if comment.like.present?
-                = comment.like
-              -else
-                0
+          = render :partial => "comment-like", :locals => { topic: @topic,  comment: comment, like: @like }
           -# 返信ボタン
           .fa.fa-reply.float-right.reply-button.btn{"data-target" => "#myReplyModal", "data-toggle" => "modal"}
   -# コメント下のフォーム

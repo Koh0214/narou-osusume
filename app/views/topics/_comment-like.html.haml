@@ -1,0 +1,6 @@
+= button_to topic_comment_likes_path(topic, comment, like),  id: "like-button", class: "fa fa-heart-o float-right like-button btn", remote: true do
+  %span{"class"=>"comment-like-number"}
+    -if comment.like.present?
+      #{comment.like}
+    -else
+      0
