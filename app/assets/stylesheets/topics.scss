@@ -32,7 +32,11 @@
 .like-button{
   color: #aaaaaa;
   font-size: 22px !important;
+}.btn:disabled{
+  // submitするために500ms後にdisableにする。その時に色が変わらないようにした。
+  opacity: 1.0 !important;
 }
+
 
 .modal-text{
   height: 150px;
