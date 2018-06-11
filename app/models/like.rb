@@ -1,3 +1,4 @@
 class Like < ApplicationRecord
-  belongs_to :comment_id, counter_cache: :likes_count
+  belongs_to :topic
+  belongs_to :comment, counter_cache: :like
 end

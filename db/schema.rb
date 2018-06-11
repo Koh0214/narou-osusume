@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_11_143402) do
+ActiveRecord::Schema.define(version: 2018_06_11_144845) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "topic_id", limit: 500
@@ -49,10 +49,12 @@ ActiveRecord::Schema.define(version: 2018_06_11_143402) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "comment_id_id"
+    t.integer "topic_id"
+    t.integer "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["comment_id_id"], name: "index_likes_on_comment_id_id"
+    t.index ["comment_id"], name: "index_likes_on_comment_id"
+    t.index ["topic_id"], name: "index_likes_on_topic_id"
   end
 
   create_table "topics", force: :cascade do |t|
