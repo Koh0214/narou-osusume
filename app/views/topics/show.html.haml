@@ -23,7 +23,8 @@
       .card.mx-2.w-100.shadow
         .card-body.pl-2.pt-3.pr-4.pb-2{:style => "min-height:100px;"}
           .row.pl-3.pb-2.small.text-muted
-            #{id+1}：
+            %span{"class"=>"comment-id-number"} #{id+1}
+            ：
             -# 名前ある時だけ、アイコンと名前を表示
             -if comment.name.present?
               -# .fa.fa-pencil.mr-1{:style => "color:grey"}
