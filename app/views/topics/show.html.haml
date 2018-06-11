@@ -41,7 +41,7 @@
         = f.label :名前
         -# 後でcontent > name に変えて名前を登録できるようにする
         = f.text_field :name, :value=>"なろう廃人さん", :placeholder=>'名前'
-        = f.text_area :content, :placeholder=>'コメントお願いします！', class: "mt-2 d-block modal-text"
+        = f.text_area :content, :placeholder=>'コメントお願いします！', class: "mt-2 d-block under-comment-text"
         .m-3
           = f.submit "コメントする", class: "btn btn-primary px-5 mx-auto d-block"
   .row.m-3
