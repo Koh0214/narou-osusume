@@ -23,13 +23,15 @@
       .card.mx-2.w-100.shadow
         .card-body.pl-2.pt-3.pr-4.pb-2{:style => "min-height:100px;"}
           .row.pl-3.pb-2.small.text-muted
-            %span{"class"=>"comment-id-number"} #{id+1}
+            %span{"class"=>"comment-index-number"} #{id+1}
             ：
             -# 名前ある時だけ、アイコンと名前を表示
             -if comment.name.present?
               -# .fa.fa-pencil.mr-1{:style => "color:grey"}
               #{comment.name}
             = comment.created_at.strftime("%Y/%m/%d/ %H:%M:%S")
+            %br
+            %span{"class"=>"comment-id"} #{comment.id}
           .font-weight-bold.pb-4
             = simple_format(comment.content,:style => "font-size:17px; line-height:160%;")
           -# いいねボタン
