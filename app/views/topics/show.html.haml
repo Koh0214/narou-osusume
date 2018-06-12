@@ -61,7 +61,6 @@
               .mx-auto
                 = form_for [@topic, @comment] do |f|
                   = f.label :名前
-                  -# 後でcontent > name に変えて名前を登録できるようにする
                   = f.text_field :name, :value=>"なろう廃人さん", :placeholder=>'名前'
                   = f.text_area :content, :placeholder=>'コメントありがとうございます！', class: "mx-auto mt-2 d-block modal-text"
                   .m-3
