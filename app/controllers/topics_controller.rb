@@ -4,6 +4,7 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
+    @topic = Topic.new
     @topics = Topic.all
   end
 
