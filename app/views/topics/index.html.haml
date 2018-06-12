@@ -33,7 +33,8 @@
         .modal-content
           .modal-header
             #exampleModalLabel.modal-title
-              新しい話題を作る
+              .h3.mt-2
+                新しい話題を作る
             %button.close{"aria-label" => "閉じる", "data-dismiss" => "modal", :type => "button"}
               .pt-3{"aria-hidden" => "true"} ×
           .modal-body
@@ -43,6 +44,6 @@
                   .mx-auto
                     = f.label :name
                     = f.text_field :name, :value=>"なろう廃人さん", :placeholder=>'名前'
-                  = f.text_area :content, :placeholder=>'廃人たちに訊きたいことを書いてください！', class: "mx-auto mt-2 d-block modal-topic-text"
+                  = f.text_area :content, :placeholder=>'廃人さんたちに訊きたいことを書いてください！', class: "mx-auto mt-2 d-block modal-topic-text"
                   .m-3
                     = f.submit "質問作成", class: "btn btn-primary px-5 mx-auto d-block"
