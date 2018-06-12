@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load',function(){
 
   $(".like-button").on("click", function(){
     var like_number = parseInt($(this).find(".comment-like-number").text());
