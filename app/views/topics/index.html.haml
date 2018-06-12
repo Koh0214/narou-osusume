@@ -1,7 +1,7 @@
+= image_tag("/assets/images/header.png", width: '375', alt: "なろう廃人のすすめ")
 .container{:style => "background-color:#e0ffff;"}
   .row
     %p#notice= notice
-    %h3.col-12 なろう廃人のすすめ
   - @topics.each do |topic|
     = link_to(topic_path(topic)) do
       .card.mx-auto.mb-1.shadow
