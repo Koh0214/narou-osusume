@@ -14,10 +14,35 @@
               %span{"class"=>"comment-count"}【
               .fa.fa-comments-o.topic-comment-icon
               %span{"class"=>"comment-count"}（#{topic.comments.count}）】
+              -# 名前表示がごちゃっとするから一旦コメントアウト
               -# - if topic.name.present?
               -#   %span{"class"=>"topic-create-user-name"}【
               -#   .fa.fa-pencil.topic-name
               -#   %span{"class"=>"topic-create-user-name"} #{topic.name}】
               = topic.created_at.strftime("%Y/%m/%d/ %H:%M")
-  .row
-    = link_to '誰かのおすすめが聞きたい！', new_topic_path, class: 'btn btn-outline-info alert-info'
+  -# .row
+  -#   = link_to '誰かのおすすめが聞きたい！', new_topic_path, class: 'btn btn-outline-info alert-info'
+
+  .row.m-3
+    / 切り替えボタンの設定
+    %button.btn.comment-button{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"}
+      = fa_icon 'pencil 2x'
+    / モーダルの設定
+    #myModal.modal.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+      .modal-dialog.modal-dialog-centered{:role => "document"}
+        .modal-content
+          .modal-header
+            #exampleModalLabel.modal-title
+              新しい話題を作る
+            %button.close{"aria-label" => "閉じる", "data-dismiss" => "modal", :type => "button"}
+              .pt-3{"aria-hidden" => "true"} ×
+          .modal-body
+            .row
+              .mx-auto
+                = form_for(@topic) do |f|
+                  .mx-auto
+                    = f.label :name
+                    = f.text_field :name, :value=>"なろう廃人さん", :placeholder=>'名前'
+                  = f.text_area :content, :placeholder=>'廃人たちに訊きたいことを書いてください！', class: "mx-auto mt-2 d-block modal-topic-text"
+                  .m-3
+                    = f.submit "質問作成", class: "btn btn-primary px-5 mx-auto d-block"
