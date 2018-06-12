@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
   // TODO わかりやすい名前をつけて関数化したい
   // TODO スマホ時にモーダル自動フォーカスを入れたい
   // 返信ボタン押したところのID番号を返信フォームに打ち込む
@@ -20,5 +20,4 @@ $(function(){
       $('.modal-text').focus();
     },500);
   })
-
 })
