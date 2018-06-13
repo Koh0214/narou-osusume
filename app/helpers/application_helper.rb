@@ -11,12 +11,12 @@ module ApplicationHelper
     {
       site: 'なろう廃人のすすめ',
       title: page_title,
-      reverse: true,
+      reverse: false,
       charset: 'utf-8',
       description: '小説家になろうのオススメ小説を教えあう共有サイトです。',
       keywords: '小説家になろう, おすすめ, オススメ',
       canonical: request.original_url,
-      separator: '|',
+      separator: ':',
       icon: [
         # { href: image_url('favicon.ico') },
         # { href: image_url('icon.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
