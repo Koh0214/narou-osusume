@@ -185,6 +185,8 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    roboto (1.0.1)
+      rails (>= 4.2)
     ruby_dep (1.5.0)
     ruby_parser (3.11.0)
       sexp_processor (~> 4.9)
@@ -268,6 +270,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.0)
+  roboto
   sass-rails (~> 5.0)
   selenium-webdriver
   sitemap_generator
