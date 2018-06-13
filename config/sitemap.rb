@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://www.example.com"
+SitemapGenerator::Sitemap.default_host = "http://narou-osusume.com"
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
@@ -24,4 +24,12 @@ SitemapGenerator::Sitemap.create do
   #   Article.find_each do |article|
   #     add article_path(article), :lastmod => article.updated_at
   #   end
+
+  # '/topics' を追加する
+  add topics_path, :priority => 0.7, :changefreq => 'daily'
+
+  # '/topics/:id' を追加する
+  Topic.find_each do |topic|
+    add topic_path(topic), :lastmod => topic.updated_at
+  end
 end
