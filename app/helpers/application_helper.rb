@@ -14,7 +14,7 @@ module ApplicationHelper
       reverse: false,
       charset: 'utf-8',
       description: '小説家になろうのオススメ小説を教えあう共有サイトです。',
-      keywords: '小説家になろう, おすすめ, オススメ',
+      keywords: '小説家になろう, なろう, なろう小説, おすすめ, オススメ',
       canonical: request.original_url,
       separator: ':',
       icon: [
