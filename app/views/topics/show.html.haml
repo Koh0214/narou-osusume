@@ -1,6 +1,7 @@
 - @page_title = @topic.content
 - @page_description = @topic.comments
-= link_to image_tag("/images/header.png", width: '375', alt: "なろう廃人のすすめ"), topics_path
+= link_to image_tag("/images/header.png", width: '375', alt: "なろう廃人のすすめ", class: "d-block d-md-none mx-auto"), topics_path
+= link_to image_tag("/images/header-pc.png", alt: "なろう廃人のすすめ", class: "d-none d-md-block img-fluid pb-2"), topics_path
 .container{:style => "background-color:#e0ffff;"}
   .row.mb-2
     #notice= notice
