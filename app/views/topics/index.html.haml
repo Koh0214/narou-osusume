@@ -7,24 +7,24 @@
         人気記事
       %hr{style: "margin: 0px;"}
       .card-body{style: "padding-top: 0px; padding-bottom: 0px; bordercolor:#e0e2e6;"}
-        = link_to "1:軽く読める短編でおすすめのやつを教えてください。", "https://narou-osusume.com/topics/29"
+        = link_to "1:軽く読める短編でおすすめのやつを教えてください。", "https://narou-osusume.com/topics/29", target: "_blank"
       %hr{style: "margin: 0px;"}
       .card-body{style: "padding-top: 0px; padding-bottom: 0px; bordercolor:#e0e2e6;"}
-        = link_to "2:勘違い系のおすすめが知りたいです。", "https://narou-osusume.com/topics/1"
+        = link_to "2:勘違い系のおすすめが知りたいです。", "https://narou-osusume.com/topics/1", target: "_blank"
       %hr{style: "margin: 0px;"}
       .card-body{style: "padding-top: 0px; padding-bottom: 0px; bordercolor:#e0e2e6;"}
-        = link_to "3:あなたが1つだけ誰かにオススメするとしたらどの小説にしますか？", "https://narou-osusume.com/topics/33"
+        = link_to "3:あなたが1つだけ誰かにオススメするとしたらどの小説にしますか？", "https://narou-osusume.com/topics/33", target: "_blank"
       %hr{style: "margin: 0px;"}
       .card-body{style: "padding-top: 0px; padding-bottom: 0px; bordercolor:#e0e2e6;"}
-        = link_to "4:書籍化したなろうで明らかに良くなったやつとかあるの？", "https://narou-osusume.com/topics/5"
+        = link_to "4:書籍化したなろうで明らかに良くなったやつとかあるの？", "https://narou-osusume.com/topics/5", target: "_blank"
       %hr{style: "margin: 0px;"}
       .card-body{style: "padding-top: 0px; padding-bottom: 0px; bordercolor:#e0e2e6;"}
-        = link_to "5:異世界転生もののテンプレって実際どんなのだろ？", "https://narou-osusume.com/topics/6"
+        = link_to "5:異世界転生もののテンプレって実際どんなのだろ？", "https://narou-osusume.com/topics/6", target: "_blank"
       %hr{style: "margin: 0px;"}
   .row
     %p#notice= notice
   - @topics.each do |topic|
-    = link_to(topic_path(topic)) do
+    = link_to(topic_path(topic), target: "_blank") do
       .card.mx-auto.shadow
         .card-body.py-1
           .row
