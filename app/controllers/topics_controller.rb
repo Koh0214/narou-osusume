@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  impressionist :actions=> [:show]
 
   # GET /topics
   # GET /topics.json
@@ -12,6 +13,7 @@ class TopicsController < ApplicationController
   # GET /topics/1.json
   def show
     @topic = Topic.where(:id => params[:id]).first
+    impressionist(@topic, nil, unique: [:session_hash])
     @comments = @topic.comments.all.order("created_at")
     @comment = @topic.comments.new
   end
