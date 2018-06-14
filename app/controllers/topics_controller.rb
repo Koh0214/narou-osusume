@@ -12,7 +12,7 @@ class TopicsController < ApplicationController
   # GET /topics/1.json
   def show
     @topic = Topic.where(:id => params[:id]).first
-    @comments = @topic.comments.all
+    @comments = @topic.comments.all.order("created_at")
     @comment = @topic.comments.new
   end
 
