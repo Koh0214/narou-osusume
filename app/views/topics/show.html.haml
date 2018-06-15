@@ -25,6 +25,7 @@
       %hr{style: "margin: 0px;"}
   .row.mb-2
     #notice= notice
+    #alert= alert
     .card.mt-2.mb-2.w-100
       .card-body.py-1
         .font-weight-bold{:style => "font-size:18px; color:#283593;"}
@@ -63,8 +64,8 @@
       = form_for [@topic, @comment] do |f|
         = f.label :名前
         -# 後でcontent > name に変えて名前を登録できるようにする
-        = f.text_field :name, :value=>"なろう廃人さん", :placeholder=>'名前'
-        = f.text_area :content, :placeholder=>'コメントお願いします！', class: "mt-2 d-block under-comment-text"
+        = f.text_field :name, value:"なろう廃人さん", placeholder:"名前", required: "required"
+        = f.text_area :content, :placeholder=>'コメントお願いします！', class: "mt-2 d-block under-comment-text", required: "required"
         .m-3
           = f.submit "コメントする", class: "btn btn-primary px-5 mx-auto d-block"
 
@@ -107,8 +108,8 @@
               .mx-auto
                 = form_for [@topic, @comment] do |f|
                   = f.label :名前
-                  = f.text_field :name, :value=>"なろう廃人さん", :placeholder=>'名前'
-                  = f.text_area :content, :placeholder=>'コメントありがとうございます！', class: "mx-auto mt-2 d-block modal-text"
+                  = f.text_field :name, value:"なろう廃人さん", placeholder:"名前", required: "required"
+                  = f.text_area :content, placeholder:'コメントありがとうございます！', class: "mx-auto mt-2 d-block modal-text", required: "required"
                   .m-3
                     = f.submit "コメントする", class: "btn btn-primary px-5 mx-auto d-block"
   -# 返信用のモーダル
@@ -130,7 +131,7 @@
                 = form_for [@topic, @comment] do |f|
                   = f.label :名前
                   -# 後でcontent > name に変えて名前を登録できるようにする
-                  = f.text_field :name, :value=>"なろう廃人さん", :placeholder=>'名前'
-                  = f.text_area :content, :placeholder=>'コメントありがとうございます！', class: "mx-auto mt-2 d-block modal-text reply-modal-text"
+                  = f.text_field :name, value:"なろう廃人さん", placeholder:"名前", required: "required"
+                  = f.text_area :content, placeholder:"コメントありがとうございます！", class: "aaaa mx-auto mt-2 d-block modal-text reply-modal-text", required: "required"
                   .m-3
                     = f.submit "コメントする", class: "btn btn-primary px-5 mx-auto d-block"
