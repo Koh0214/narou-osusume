@@ -42,6 +42,8 @@
               -#   %span{"class"=>"topic-create-user-name"} #{topic.name}】
               = topic.created_at.strftime("%Y/%m/%d/ %H:%M")
               【#{topic.impressionist_count} PV】
+  .mt-2
+    = paginate @topics
 
   .row.m-3
     / 切り替えボタンの設定

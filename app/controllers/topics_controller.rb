@@ -6,6 +6,7 @@ class TopicsController < ApplicationController
   def index
     @topic = Topic.new
     @topics = Topic.order("id desc")
+    @topics = Topic.page(params[:page]).per(10).order("id desc")
   end
 
   # GET /topics/1
