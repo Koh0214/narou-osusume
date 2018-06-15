@@ -65,7 +65,7 @@
                 = form_for(@topic) do |f|
                   .mx-auto
                     = f.label :name
-                    = f.text_field :name, :value=>"なろう廃人さん", :placeholder=>'名前'
-                  = f.text_area :content, :placeholder=>'廃人さんたちに訊きたいことを書いてください！', class: "mx-auto mt-2 d-block modal-topic-text"
+                    = f.text_field :name, value:"なろう廃人さん", placeholder:"名前", required: "required"
+                  = f.text_area :content, placeholder:"廃人さんたちに訊きたいことを書いてください！", class: "mx-auto mt-2 d-block modal-topic-text", required: "required"
                   .m-3
                     = f.submit "質問作成", class: "btn btn-primary px-5 mx-auto d-block"
