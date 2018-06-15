@@ -54,6 +54,8 @@ gem 'impressionist'
 
 gem 'kaminari'
 
+gem 'better_errors'
+
 # 定時実行のファイルを作る
 # https://qiita.com/hirotakasasaki/items/3b31966294a809b99c4c
 gem 'whenever', require: false
