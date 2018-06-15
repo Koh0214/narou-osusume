@@ -37,7 +37,7 @@ class TopicsController < ApplicationController
         format.html { redirect_to topics_path, notice: '新しい質問が作成されました！ありがとうございます！' }
         format.json { render :show, status: :created, location: @topic }
       else
-        format.html { render :new }
+        format.html { redirect_to topics_path, alert: '※空欄の場合トピック作成できません' }
         format.json { render json: @topic.errors, status: :unprocessable_entity }
       end
     end
